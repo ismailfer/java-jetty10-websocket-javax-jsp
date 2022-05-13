@@ -1,16 +1,3 @@
-//
-// ========================================================================
-// Copyright (c) Mort Bay Consulting Pty Ltd and others.
-//
-// This program and the accompanying materials are made available under the
-// terms of the Eclipse Public License v. 2.0 which is available at
-// https://www.eclipse.org/legal/epl-2.0, or the Apache License, Version 2.0
-// which is available at https://www.apache.org/licenses/LICENSE-2.0.
-//
-// SPDX-License-Identifier: EPL-2.0 OR Apache-2.0
-// ========================================================================
-//
-
 package com.ismail.jetty;
 
 import java.io.IOException;
@@ -24,9 +11,14 @@ import org.eclipse.jetty.util.component.LifeCycle;
 
 import com.ismail.jetty.ws.EventWebSocket;
 
+import lombok.extern.slf4j.Slf4j;
+
+/**
+ * Websocket client that conects to a websocket server
+ */
+@Slf4j
 public class JettyWebsocketClient
 {
-
 
     public void run(URI uri) throws InterruptedException, IOException, DeploymentException
     {
@@ -65,7 +57,9 @@ public class JettyWebsocketClient
     public static void main(String[] args)
     {
         JettyWebsocketClient client = new JettyWebsocketClient();
-        URI uri = URI.create("ws://localhost:8080/events/");
+        
+        URI uri = URI.create("ws://localhost:9080/events/");
+        
         try
         {
             client.run(uri);
